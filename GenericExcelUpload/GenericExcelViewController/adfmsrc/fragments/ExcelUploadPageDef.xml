@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="ExcelUploadPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="EXCEL_STG_MAPPING_ROVOIterator" Binds="EXCEL_STG_MAPPING_ROVO"
+              DataControl="AppModuleDataControl" RangeSize="25"/>
+    <iterator id="INTERFACE_MASTER_ROVOIterator" Binds="INTERFACE_MASTER_ROVO"
+              DataControl="AppModuleDataControl" RangeSize="25"/>
+    <iterator Binds="Dummy_ROVO" RangeSize="25"
+              DataControl="AppModuleDataControl" id="Dummy_ROVOIterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="Dummy_ROVOIterator" StaticList="false"
+          Uses="LOV_ParentFaceId" id="ParentFaceId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="Dummy_ROVOIterator" StaticList="false"
+          Uses="LOV_ChildFaceId" id="ChildFaceId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <methodAction id="uploadData"
+                  InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="uploadData"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.AppModuleDataControl.methodResults.uploadData_AppModuleDataControl_dataProvider_uploadData_result">
+      <NamedData NDName="ifaceId" NDType="java.lang.String"/>
+      <NamedData NDName="parentIfaceId" NDType="java.lang.String"/>
+      <NamedData NDName="processedData" NDType="java.util.Map"/>
+    </methodAction>
+    <action id="Commit" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <list IterBinding="Dummy_ROVOIterator" StaticList="false" Uses="LOV_Action"
+          id="Action" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

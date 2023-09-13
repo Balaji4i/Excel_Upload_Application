@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Dummy_ROVO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="INTERFACE_MASTER_Parent"
+    ViewObjectName="model.rovo.INTERFACE_MASTER_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SearchParentOnly"
+      FullName="model.rovo.INTERFACE_MASTER_ROVO.SearchParentOnly"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="INTERFACE_MASTER_Child"
+    ViewObjectName="model.rovo.INTERFACE_MASTER_ROVO">
+    <ViewCriteriaUsage
+      Name="SearchChildByParent"
+      FullName="model.rovo.INTERFACE_MASTER_ROVO.SearchChildByParent"/>
+    <ParameterMap>
+      <PIMap Variable="BV_PARENT_ID">
+        <TransientExpression><![CDATA[ParentFaceId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="ActionStatic_ROVO1"
+    ViewObjectName="model.rovo.ActionStatic_ROVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_ParentFaceId"
+    ListVOName="INTERFACE_MASTER_Parent"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_ParentFaceId_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ParentFaceId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="IfaceId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="IfaceName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ChildFaceId"
+    ListVOName="INTERFACE_MASTER_Child"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_ChildFaceId_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ChildFaceId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="IfaceId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="IfaceName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Action"
+    ListVOName="ActionStatic_ROVO1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_Action_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Action"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Action"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ActionDisplay"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[select sysdate from dual]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="Sysdate1"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="SYSDATE1"
+    Expression="SYSDATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+      <Attr Name="_diagramName" Value="Sysdate"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ParentFaceId"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="ARRAY"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"
+    LOVName="LOV_ParentFaceId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ChildFaceId"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"
+    LOVName="LOV_ChildFaceId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="File"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.BlobDomain"
+    ColumnType="BLOB"
+    AliasName="VIEW_ATTR"
+    SQLType="SMALLINT"/>
+  <ViewAttribute
+    Name="Action"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_Action"
+    DefaultValue="TEMPLATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.GenericExcelModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

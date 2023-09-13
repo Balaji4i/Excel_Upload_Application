@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73"
+                id="ExcelUpload_BTF_ExcelUpload_BTF_parentInterfaceIdPageDef"
+                Package="taskFlow" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="parentInterfaceId" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="parentInterfaceId"
+                  IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="AppModuleDataControl.dataProvider"
+                  ReturnName="data.AppModuleDataControl.methodResults.parentInterfaceId_AppModuleDataControl_dataProvider_parentInterfaceId_result">
+      <NamedData NDName="parentInterfaceName"
+                 NDValue="#{pageFlowScope.parentInterfaceName}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

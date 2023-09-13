@@ -1,0 +1,30 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<References xmlns="http://xmlns.oracle.com/adf/jndi">
+   <Reference name="OmniyatLease" className="oracle.jdeveloper.db.adapter.DatabaseProvider" credentialStoreKey="OmniyatLease" xmlns="">
+      <Factory className="oracle.jdeveloper.db.adapter.DatabaseProviderFactory"/>
+      <RefAddresses>
+         <StringRefAddr addrType="subtype">
+            <Contents>oraJDBC</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="port">
+            <Contents>1533</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="hostname">
+            <Contents>144.21.67.79</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="user">
+            <Contents>xxpl_march</Contents>
+         </StringRefAddr>
+         <SecureRefAddr addrType="password"/>
+         <StringRefAddr addrType="serviceName">
+            <Contents>OMNIPDB1.606532292.oraclecloud.internal</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="DeployPassword">
+            <Contents>true</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="oraDriverType">
+            <Contents>thin</Contents>
+         </StringRefAddr>
+      </RefAddresses>
+   </Reference>
+</References>

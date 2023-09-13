@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AppModule"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true"
+  ComponentClass="model.am.AppModuleImpl"
+  DefClass="model.am.AppModuleDefImpl"
+  ComponentInterface="model.am.common.AppModule"
+  ClientProxyName="model.am.client.AppModuleClient">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+    <Attr Name="_isDefCodegen" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewUsage
+    Name="EXCEL_STG_MAPPING_ROVO"
+    ViewObjectName="model.rovo.EXCEL_STG_MAPPING_ROVO"/>
+  <ViewUsage
+    Name="INTERFACE_MASTER_ROVO"
+    ViewObjectName="model.rovo.INTERFACE_MASTER_ROVO"/>
+  <ViewUsage
+    Name="Dummy_ROVO"
+    ViewObjectName="model.rovo.Dummy_ROVO"/>
+  <ViewUsage
+    Name="DynamicROVO"
+    ViewObjectName="model.rovo.DynamicROVO"/>
+  <ClientInterface>
+    <Method
+      Name="uploadData">
+      <Return
+        Type="java.lang.String"/>
+      <Parameter
+        Name="ifaceId"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="parentIfaceId"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="processedData"
+        Type="java.util.Map"/>
+    </Method>
+    <Method
+      Name="parentInterfaceId">
+      <Return
+        Type="java.lang.String"/>
+      <Parameter
+        Name="parentInterfaceName"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+  <ClientInterface>
+    <Method
+      Name="uploadData">
+      <Return
+        Type="java.lang.String"/>
+      <Parameter
+        Name="ifaceId"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="parentIfaceId"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="processedData"
+        Type="java.util.Map"/>
+    </Method>
+    <Method
+      Name="parentInterfaceId">
+      <Return
+        Type="java.lang.String"/>
+      <Parameter
+        Name="parentInterfaceName"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

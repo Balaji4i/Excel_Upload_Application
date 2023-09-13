@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="model.am.AppModule">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.GenericExcelModel" name="AppModuleLocal" ApplicationName="model.am.AppModule">
+         <Security AppModuleJndiName="model.am.AppModule"/>
+         <Custom JDBCDataSource="PRISM_PL"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="model.GenericExcelModel" name="AppModuleShared" ApplicationName="model.am.AppModule">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Security AppModuleJndiName="model.am.AppModule"/>
+         <Custom JDBCDataSource="PRISM_PL"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

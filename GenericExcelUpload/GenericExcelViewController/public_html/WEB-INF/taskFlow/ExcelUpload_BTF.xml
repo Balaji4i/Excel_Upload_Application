@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="ExcelUpload_BTF">
+    <default-activity id="__1">Router</default-activity>
+    <input-parameter-definition id="__6">
+      <name id="__7">parentInterfaceName</name>
+      <value>#{pageFlowScope.parentInterfaceName}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__2">
+      <managed-bean-name id="__3">ExcelUploadBB</managed-bean-name>
+      <managed-bean-class id="__5">bean.ExcelUploadBB</managed-bean-class>
+      <managed-bean-scope id="__4">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="ExcelUpload">
+      <page>/fragments/ExcelUpload.jsff</page>
+    </view>
+    <method-call id="filterParent">
+      <method>#{bindings.parentInterfaceId.execute}</method>
+      <return-value id="__9">#{pageFlowScope.parentInterfaceId}</return-value>
+      <outcome id="__8">
+        <fixed-outcome>parentInterfaceId</fixed-outcome>
+      </outcome>
+    </method-call>
+    <router id="Router">
+      <case>
+        <expression>#{pageFlowScope.parentInterfaceName ne null}</expression>
+        <outcome id="__24">toMethod</outcome>
+      </case>
+      <default-outcome>toPage</default-outcome>
+    </router>
+    <control-flow-rule id="__10">
+      <from-activity-id id="__11">filterParent</from-activity-id>
+      <control-flow-case id="__12">
+        <from-outcome id="__15">parentInterfaceId</from-outcome>
+        <to-activity-id id="__13">ExcelUpload</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id id="__17">Router</from-activity-id>
+      <control-flow-case id="__19">
+        <from-outcome id="__20">toPage</from-outcome>
+        <to-activity-id id="__18">ExcelUpload</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__21">
+        <from-outcome id="__23">toMethod</from-outcome>
+        <to-activity-id id="__22">filterParent</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

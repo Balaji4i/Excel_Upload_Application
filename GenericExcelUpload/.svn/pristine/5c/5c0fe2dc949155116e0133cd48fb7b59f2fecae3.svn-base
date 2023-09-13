@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"> 
+  <af:panelStretchLayout id="psl1" topHeight="30px" bottomHeight="30px" styleClass="AFStretchWidth AFStretchHeight">
+    <f:facet name="bottom">
+      <af:panelGroupLayout layout="scroll"
+                           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                           id="pgl5" inlineStyle="background-color:#3773b3;">
+         
+        <af:panelGroupLayout id="pgl2"/>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="center"> 
+            <af:panelGroupLayout layout="scroll"
+                                 xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                 id="pgl1" halign="center"
+                                 inlineStyle="background-color:#f6fad9;">
+              <af:spacer width="10" height="20" id="s5"/>
+              <af:outputText value="#{backingBeanScope.ExcelUploadBB.hiddenOutput}" id="ot1" visible="false"/>
+              <af:selectOneRadio value="#{bindings.Action.inputValue}"
+                                   simple="true" autoSubmit="true"
+                                   required="#{bindings.Action.hints.mandatory}"
+                                   shortDesc="#{bindings.Action.hints.tooltip}"
+                                   id="sor1" layout="horizontal">
+                  <f:selectItems value="#{bindings.Action.items}" id="si3"/>
+                </af:selectOneRadio>
+              <af:spacer width="10" height="10" id="s3"/>
+              <af:panelFormLayout id="pfl1" labelWidth="200"
+                                  labelAlignment="top"> 
+                <af:selectOneChoice value="#{bindings.ParentFaceId.inputValue}"
+                                    label="Parent Interface"
+                                    autoSubmit="true" disabled="true"
+                                    contentStyle="width:150px;"
+                                    required="#{bindings.ParentFaceId.hints.mandatory}"
+                                    shortDesc="#{bindings.ParentFaceId.hints.tooltip}"
+                                    id="soc1">
+                  <f:selectItems value="#{bindings.ParentFaceId.items}"
+                                 id="si1"/>
+                </af:selectOneChoice>
+                <af:selectOneChoice value="#{bindings.ChildFaceId.inputValue}"
+                                    label="Child Interface" unselectedLabel="ALL"
+                                    partialTriggers="soc1" autoSubmit="true"
+                                    contentStyle="width:150px;"
+                                    required="#{bindings.ChildFaceId.hints.mandatory}"
+                                    shortDesc="#{bindings.ChildFaceId.hints.tooltip}"
+                                    id="soc2">
+                  <f:selectItems value="#{bindings.ChildFaceId.items}"
+                                 id="si2"/>
+                </af:selectOneChoice>  
+              </af:panelFormLayout> 
+              <af:spacer width="10" height="10" id="s1"/>
+              <af:panelGroupLayout id="pgl4" layout="vertical" partialTriggers="sor1">
+                <af:commandButton text="Download Template" id="cb1" rendered="#{bindings.Action.inputValue eq 'TEMPLATE'}">
+                  <af:fileDownloadActionListener contentType="application/xls"
+                                                 filename="Lease Template.xls"
+                                                 method="#{backingBeanScope.ExcelUploadBB.downLoadTemplate}"/>
+                </af:commandButton>                    
+                  <af:spacer width="10" height="10" id="s2"/>
+                <af:panelGroupLayout id="pgl3" layout="horizontal" rendered="#{bindings.Action.inputValue eq 'UPLOAD'}">
+                <af:inputFile label="Select File" id="if1" autoSubmit="true" 
+                                valueChangeListener="#{backingBeanScope.ExcelUploadBB.fileUploadVCL}"
+                                binding="#{backingBeanScope.ExcelUploadBB.fileUploadBinding}"/>
+                  <af:spacer width="10" height="10" id="s4"/>
+                  <af:commandButton text="Upload" id="cb2" 
+                                    actionListener="#{backingBeanScope.ExcelUploadBB.onClickUpload}"/>
+                  <af:spacer width="10" height="10" id="s6"/>
+                  <af:commandButton text="Process" id="cb3" visible="#{pageFlowScope.showProcessButton eq 'true'}"
+                                    actionListener="#{backingBeanScope.ExcelUploadBB.onClickProcess}"/>
+                  <af:spacer width="10" height="10" id="s7"/>
+                  <af:commandButton text="Download Error" id="cb4"
+                                    visible="#{pageFlowScope.showErrorDownloadButton eq 'true'}">
+                  <af:fileDownloadActionListener contentType="application/xls"
+                                                 filename="Error.xls"
+                                                 method="#{backingBeanScope.ExcelUploadBB.downLoadTempData}"/>
+                  </af:commandButton>
+                </af:panelGroupLayout>
+              </af:panelGroupLayout> 
+            </af:panelGroupLayout>
+            
+           
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top">
+     <af:panelGroupLayout layout="scroll"
+                           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                           id="pgl6"
+                          inlineStyle="background-color:#3773b3;">
+        <af:panelGroupLayout id="pgl8" layout="vertical">
+        <af:outputText value="Excel Import" id="ot2"
+                       inlineStyle="font-size:x-large; color:#ffffff; font-family:'Times New Roman', 'Arial Black', times, Serif;"/>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>
